@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Just Player</string>
-    <string name="subtitles_scope">要自动加载外部字幕，授予 %s 访问包含你视频的最顶层文件夹的权限 (如 Movies)。</string>
     <string name="error_files_missing">文件应用处于禁用或缺失状态</string>
     <string name="error_details">详情</string>
     <string name="open_subtitles">加载字幕</string>
@@ -11,4 +10,7 @@
     <string name="video_orientation_video">视频方向</string>
     <string name="video_resize_crop">裁剪</string>
     <string name="video_resize_fit">适应</string>
+    <string name="delete_confirmation">删除</string>
+    <string name="delete_query">删除这个文件？</string>
+    <string name="request_scope">要自动加载外部字幕或启用跳到目录中的下一个文件，请允许%s访问包含您的视频（例如电影）的最顶层文件夹的。</string>
 </resources>

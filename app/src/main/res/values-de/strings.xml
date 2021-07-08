@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Einfach Player</string>
-    <string name="subtitles_scope">Um externe Untertitel automatisch zu laden, gewähren Sie %s Zugriff auf den obersten Ordner, der Ihre Videos enthält (z. B. Filme).</string>
     <string name="error_files_missing">Dateien-Anwendung ist deaktiviert oder fehlt</string>
     <string name="error_details">Einzelheiten</string>
     <string name="open_subtitles">Untertitel laden</string>
@@ -11,4 +10,7 @@
     <string name="video_orientation_video">Videoorientierung</string>
     <string name="video_resize_crop">Zuschneiden</string>
     <string name="video_resize_fit">Anpassen</string>
+    <string name="delete_confirmation">Löschen</string>
+    <string name="delete_query">Diese Datei löschen\?</string>
+    <string name="request_scope">Um automatisch externe Untertitel zu laden oder das Springen zur nächsten Datei in einem Verzeichnis zu aktivieren, gewähren Sie %s Zugriff auf den obersten Ordner, der Ihre Videos enthält (z. B. Filme).</string>
 </resources>
