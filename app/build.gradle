@@ -7,12 +7,12 @@ android {
     ndkVersion '21.4.7075529'
 
     defaultConfig {
-        applicationId "com.brouken.player"
+        applicationId "com.allcodecaudify.player"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 45
         versionName "0.45"
-        archivesBaseName = "Just.Player.v${versionName}"
+        archivesBaseName = "Allcodec.Audify.Player.v${versionName}"
     }
 
     buildTypes {
