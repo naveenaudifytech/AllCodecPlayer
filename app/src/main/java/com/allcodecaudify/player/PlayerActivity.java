@@ -1,5 +1,6 @@
-package com.brouken.player;
+package com.allcodecaudify.player;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
@@ -55,10 +56,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.documentfile.provider.DocumentFile;
 
-import com.brouken.player.dtpv.DoubleTapPlayerView;
-import com.brouken.player.dtpv.youtube.YouTubeOverlay;
+import com.allcodecaudify.player.dtpv.DoubleTapPlayerView;
+import com.allcodecaudify.player.dtpv.youtube.YouTubeOverlay;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.android.exoplayer2.C;
@@ -119,7 +122,7 @@ public class PlayerActivity extends Activity {
     private ExoPlaybackException errorToShow;
     public static int boostLevel = 0;
 
-    private static final int REQUEST_CHOOSER_VIDEO = 1;
+    private static final int REQUEST_CHOOSER_AUDIO = 1;
     private static final int REQUEST_CHOOSER_SUBTITLE = 2;
     private static final int REQUEST_CHOOSER_SCOPE_DIR = 10;
     public static final int CONTROLLER_TIMEOUT = 3500;
@@ -159,6 +162,57 @@ public class PlayerActivity extends Activity {
     final Rational rationalLimitWide = new Rational(239, 100);
     final Rational rationalLimitTall = new Rational(100, 239);
 
+    //Permision code that will be checked in the method onRequestPermissionsResult
+    private int STORAGE_PERMISSION_CODE = 23;
+
+    //We are calling this method to check the permission status
+    private boolean isReadStorageAllowed() {
+        //Getting the permission status
+        int result = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        //If permission is granted returning true
+        if (result == PackageManager.PERMISSION_GRANTED)
+            return true;
+
+        //If permission is not granted returning false
+        return false;
+    }
+
+    //Requesting permission
+    private void requestStoragePermission(){
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE) ||
+                ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) ||
+                ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.INTERNET) ||
+                ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.MANAGE_EXTERNAL_STORAGE)){
+            //If the user has denied the permission previously your code will come to this block
+            //Here you can explain why you need this permission
+            //Explain here why you need this permission
+        }
+
+        //And finally ask for the permission
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.INTERNET,Manifest.permission.MANAGE_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
+    }
+
+    //This method will be called when the user will tap on allow or deny
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,  int[] grantResults) {
+
+        //Checking the request code of our request
+        if(requestCode == STORAGE_PERMISSION_CODE){
+
+            //If permission is granted
+            if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+                //Displaying a toast
+                Toast.makeText(this,"Permissions granted",Toast.LENGTH_LONG).show();
+            }else{
+                //Displaying another toast if permission is not granted
+                Toast.makeText(this,"Oops you just denied the permission",Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Rotate ASAP, before super/inflating to avoid glitches with activity launch animation
@@ -195,6 +249,8 @@ public class PlayerActivity extends Activity {
         playerView.setControllerAutoShow(true);
 
         ((DoubleTapPlayerView)playerView).setDoubleTapEnabled(false);
+
+        requestStoragePermission();
 
         // https://github.com/google/ExoPlayer/issues/5765
         CustomDefaultTimeBar timeBar = playerView.findViewById(R.id.exo_progress);
@@ -315,7 +371,7 @@ public class PlayerActivity extends Activity {
             final Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.putExtra(Intent.EXTRA_STREAM, mPrefs.mediaUri);
             if (mPrefs.mediaType == null)
-                shareIntent.setType("video/*");
+                shareIntent.setType("audio/*");
             else
                 shareIntent.setType(mPrefs.mediaType);
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -688,7 +744,7 @@ public class PlayerActivity extends Activity {
             releasePlayer();
         }
 
-        if (requestCode == REQUEST_CHOOSER_VIDEO) {
+        if (requestCode == REQUEST_CHOOSER_AUDIO) {
             if (resultCode == RESULT_OK) {
                 final Uri uri = data.getData();
                 boolean uriAlreadyTaken = false;
@@ -1074,9 +1130,9 @@ public class PlayerActivity extends Activity {
 
             final Intent intent = createBaseFileIntent(Intent.ACTION_OPEN_DOCUMENT, pickerInitialUri);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
-            intent.setType("video/*");
+            intent.setType("audio/*");
 
-            safelyStartActivityForResult(intent, REQUEST_CHOOSER_VIDEO);
+            safelyStartActivityForResult(intent, REQUEST_CHOOSER_AUDIO);
         }
     }
 

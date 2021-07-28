@@ -1,4 +1,4 @@
-package com.brouken.player.dtpv.youtube.views;
+package com.allcodecaudify.player.dtpv.youtube.views;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.util.Consumer;
 
-import com.brouken.player.R;
+import com.allcodecaudify.player.R;
 
 /**
  * Layout group which handles the icon animation while forwarding and rewinding.

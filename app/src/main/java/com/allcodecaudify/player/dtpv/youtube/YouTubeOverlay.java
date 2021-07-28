@@ -1,4 +1,4 @@
-package com.brouken.player.dtpv.youtube;
+package com.allcodecaudify.player.dtpv.youtube;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -19,13 +19,13 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.TextViewCompat;
 
-import com.brouken.player.PlayerActivity;
-import com.brouken.player.R;
-import com.brouken.player.dtpv.DoubleTapPlayerView;
-import com.brouken.player.dtpv.PlayerDoubleTapListener;
-import com.brouken.player.dtpv.SeekListener;
-import com.brouken.player.dtpv.youtube.views.CircleClipTapView;
-import com.brouken.player.dtpv.youtube.views.SecondsView;
+import com.allcodecaudify.player.PlayerActivity;
+import com.allcodecaudify.player.R;
+import com.allcodecaudify.player.dtpv.DoubleTapPlayerView;
+import com.allcodecaudify.player.dtpv.PlayerDoubleTapListener;
+import com.allcodecaudify.player.dtpv.SeekListener;
+import com.allcodecaudify.player.dtpv.youtube.views.CircleClipTapView;
+import com.allcodecaudify.player.dtpv.youtube.views.SecondsView;
 import com.google.android.exoplayer2.SeekParameters;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 

@@ -1,4 +1,4 @@
-package com.brouken.player.dtpv;
+package com.allcodecaudify.player.dtpv;
 
 public interface PlayerDoubleTapListener {
 

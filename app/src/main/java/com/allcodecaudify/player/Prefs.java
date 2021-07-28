@@ -1,4 +1,4 @@
-package com.brouken.player;
+package com.allcodecaudify.player;
 
 import android.content.ContentResolver;
 import android.content.Context;

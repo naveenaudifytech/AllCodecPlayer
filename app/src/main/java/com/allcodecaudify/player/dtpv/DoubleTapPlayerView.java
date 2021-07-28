@@ -1,4 +1,4 @@
-package com.brouken.player.dtpv;
+package com.allcodecaudify.player.dtpv;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,8 +11,8 @@ import android.view.View;
 
 import androidx.core.view.GestureDetectorCompat;
 
-import com.brouken.player.CustomStyledPlayerView;
-import com.brouken.player.R;
+import com.allcodecaudify.player.CustomStyledPlayerView;
+import com.allcodecaudify.player.R;
 
 /**
  * Custom player class for Double-Tapping listening

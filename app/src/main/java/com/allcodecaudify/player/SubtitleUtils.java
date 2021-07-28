@@ -1,4 +1,4 @@
-package com.brouken.player;
+package com.allcodecaudify.player;
 
 import android.content.Context;
 import android.net.Uri;
